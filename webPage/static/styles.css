@@ -1,0 +1,138 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px; /* Adjusted padding to move higher */
+    background-color: #1b152d;
+    position: relative;
+    z-index: 10;
+}
+
+
+.container {
+    display: flex;
+    height: calc(100vh - 50px); /* Hauteur totale moins la hauteur de l'en-tête */
+}
+
+.main-content {
+    background-color: #4a3e73;
+    flex: 4;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar {
+    flex: 2;
+    padding: 20px;
+    background-color: #2b2443;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    color: aliceblue;
+}
+
+.article-item h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+}
+
+.article-item p {
+    margin: 0 0 5px;
+}
+
+.folders_bar {
+    flex: 1;
+    padding: 20px;
+    background-color: #2b2443;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    color: aliceblue;
+}
+
+.folder-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.folder-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.folder-item h3 {
+    color: aliceblue;
+    margin-bottom: 10px;
+}
+
+.folder-item ul {
+    padding-left: 20px;
+}
+
+.folder-item ul li {
+    color: aliceblue;
+    margin-bottom: 5px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px; /* Increased width */
+    height: 100px; /* Increased height */
+    margin-right: 20px; /* Increased margin for better spacing */
+}
+
+.logo h1 {
+    font-size: 36px; /* Increased font size for the logo text */
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}

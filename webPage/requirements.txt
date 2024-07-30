@@ -1,0 +1,13 @@
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+keras
+torch
+torchvision
+opencv-python-headless
+requests
+beautifulsoup4
+flask

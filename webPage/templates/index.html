@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste d'Articles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="DeepAnatomy Logo">
+            <h1>DeepAnatomy</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="nouveau.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">3d Model</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="folders_bar">
+            <ul class="folder-list" id="folder-list">
+                {% for folder, articles in folders.items() %}
+                <li class="folder-item">
+                    <h3>{{ folder }}</h3>
+                    <ul>
+                        {% for article in articles %}
+                        <li>{{ article }}</li>
+                        {% endfor %}
+                    </ul>
+                    <button onclick="deleteFolder('{{ folder }}')">Supprimer</button>
+                    <button onclick="renameFolder('{{ folder }}')">Renommer</button>
+                </li>
+                {% endfor %}
+            </ul>
+            <input type="text" id="new-folder-name" placeholder="Nouveau folder">
+            <button onclick="addFolder()">Ajouter Folder</button>
+        </div>
+        <div class="main-content">
+            <!-- Contenu principal ici -->
+             <h3> Mettre le modèle 3D ici !</h3>
+        </div>
+        <div class="sidebar">
+            <input type="text" placeholder="Rechercher..." class="search-bar">
+            <ul class="article-list" id="article-list">
+                <!-- Les articles recherchés seront ajoutés ici -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchBar = document.querySelector('.search-bar');
+            const articleList = document.querySelector('#article-list');
+
+            searchBar.addEventListener('input', async () => {
+                const query = searchBar.value;
+                
+                if (query.length > 2) {
+                    try {
+                        const response = await fetch(`/search?query=${encodeURIComponent(query)}`);
+                        const results = await response.json();
+                        
+                        articleList.innerHTML = '';
+                        
+                        results.forEach(article => {
+                            const item = document.createElement('li');
+                            item.classList.add('article-item');
+                            
+                            item.innerHTML = `
+                                <h3>${article.title}</h3>
+                                <p><strong>Auteur:</strong> ${article.authors}</p>
+                                <p><strong>Date:</strong> ${article.publication_date}</p>
+                                <p><a href="${article.link}">Lire l'article</a></p>
+                                <button onclick="saveArticle('${article.title}')">Enregistrer dans un folder</button>
+                            `;
+                            
+                            articleList.appendChild(item);
+                        });
+                    } catch (error) {
+                        console.error('Erreur lors de la récupération des données:', error);
+                    }
+                }
+            });
+        });
+
+        function addFolder() {
+            const folderName = document.getElementById('new-folder-name').value;
+            fetch('/add_folder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ folder_name: folderName })
+            }).then(response => response.json())
+            .then(data => {
+                updateFolderList(data);
+            });
+        }
+
+        function deleteFolder(folderName) {
+            fetch('/delete_folder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ folder_name: folderName })
+            }).then(response => response.json())
+            .then(data => {
+                updateFolderList(data);
+            });
+        }
+
+        function renameFolder(oldName) {
+            const newName = prompt("Entrer le nouveau nom du folder:");
+            fetch('/rename_folder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ old_name: oldName, new_name: newName })
+            }).then(response => response.json())
+            .then(data => {
+                updateFolderList(data);
+            });
+        }
+
+        function saveArticle(articleName) {
+            const folderName = prompt("Entrer le nom du folder:");
+            fetch('/add_article_to_folder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ folder_name: folderName, article_name: articleName })
+            }).then(response => response.json())
+            .then(data => {
+                updateFolderList(data);
+            });
+        }
+
+        function updateFolderList(folders) {
+            const folderList = document.getElementById('folder-list');
+            folderList.innerHTML = '';
+            for (const [folder, articles] of Object.entries(folders)) {
+                const folderItem = document.createElement('li');
+                folderItem.classList.add('folder-item');
+                folderItem.innerHTML = `
+                    <h3>${folder}</h3>
+                    <ul>
+                        ${articles.map(article => `<li>${article}</li>`).join('')}
+                    </ul>
+                    <button onclick="deleteFolder('${folder}')">Supprimer</button>
+                    <button onclick="renameFolder('${folder}')">Renommer</button>
+                `;
+                folderList.appendChild(folderItem);
+            }
+        }
+    </script>
+</body>
+</html>

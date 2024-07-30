@@ -3,122 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BodyVision</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>DeepAnatomy</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body, html {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: Arial, sans-serif;
+            background-color: #2b2443;
+            color: #fff;
             overflow: hidden;
         }
-        .container {
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px; /* Adjusted padding to move higher */
+            background-color: transparent;
             position: relative;
-            width: 100%;
-            height: 100vh;
+            z-index: 10;
         }
-        .video-bg {
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 100px; /* Increased width */
+            height: 100px; /* Increased height */
+            margin-right: 20px; /* Increased margin for better spacing */
+        }
+
+        .logo h1 {
+            font-size: 36px; /* Increased font size for the logo text */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Reduced height to move it up */
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            margin-bottom: 10vh; /* Added margin-bottom to move it further from the bottom */
+        }
+
+        .hero h2 {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .hero .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero a.btn {
+            padding: 15px 30px;
+            background-color: rgba(193, 39, 45, 0.8); /* Semi-transparent background */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .hero a.btn:hover {
+            background-color: rgba(160, 32, 35, 0.8); /* Semi-transparent background on hover */
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
             background: rgba(0, 0, 0, 0.5);
-        }
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            color: white;
-            font-size: 24px;
-        }
-        .navbar .logo i {
-            margin-right: 10px;
-        }
-        .navbar ul {
-            display: flex;
-            list-style: none;
-        }
-        .navbar ul li {
-            margin-left: 20px;
-        }
-        .navbar ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .navbar ul li a.faq {
-            padding: 10px 20px;
-            background: white;
-            color: black;
-            border-radius: 5px;
-        }
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-        }
-        .content h1 {
-            font-size: 64px;
-            margin: 0;
-            color: #ddd; /* Darker color */
-        }
-        .content p {
-            font-size: 18px;
-            margin: 20px 0;
-            color: #ddd; /* Darker color */
-        }
-        .content .btn {
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-        .content .btn.get-started {
-            background: white;
-            color: black;
-        }
-        .content .btn.join-now {
-            background: brown;
-            color: white;
+            z-index: 5;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <video class="video-bg" autoplay muted loop>
-            <source src="/vecteezy_human-body-3d-video-animation-of-inside-of-human-body_32202914.mp4" type="video/mp4">
-        </video>
-        <div class="navbar">
-            <div class="logo">
-                <i class="fas fa-cube"></i> BodyVision
-            </div>
+    <header>
+        <div class="logo">
+            <img src="depp.png" alt="DeepAnatomy Logo">
+            <h1>DeepAnatomy</h1>
+        </div>
+        <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#" class="faq">FAQ</a></li>
+                <li><a href="nouveau.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">3d Model</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Sign In</a></li>
             </ul>
-        </div>
-        <div class="content">
-            <h1>Discover the Interactive Health</h1>
-            <p>Explore the 3D Body Model, Dive into Insightful Articles, Chat with our AI Assistant, and Share Your Thoughts on the Platform</p>
-            <button class="btn get-started">Get Started</button>
-            <button class="btn join-now">Join Now</button>
-        </div>
-    </div>
+        </nav>
+    </header>
+    <div class="overlay"></div>
+    <video autoplay muted loop class="video-background">
+        <source src="../projet_three_js/vecteezy_human-body-3d-video-animation-of-inside-of-human-body_32202914.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <main>
+        <section class="hero">
+            <h2>Explore, Interact, Discover</h2>
+            <p>Revolutionizing Medical Research</p>
+            <div class="btn-container">
+                <a href="#" class="btn">Get Started</a>
+                <a href="#" class="btn">Sign In</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

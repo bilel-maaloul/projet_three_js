@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BodyVision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+        }
+        .navbar .logo i {
+            margin-right: 10px;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+        .navbar ul li {
+            margin-left: 20px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar ul li a.faq {
+            padding: 10px 20px;
+            background: white;
+            color: black;
+            border-radius: 5px;
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        .content h1 {
+            font-size: 64px;
+            margin: 0;
+            color: #ddd; /* Darker color */
+        }
+        .content p {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #ddd; /* Darker color */
+        }
+        .content .btn {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .content .btn.get-started {
+            background: white;
+            color: black;
+        }
+        .content .btn.join-now {
+            background: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <video class="video-bg" autoplay muted loop>
+            <source src="/vecteezy_human-body-3d-video-animation-of-inside-of-human-body_32202914.mp4" type="video/mp4">
+        </video>
+        <div class="navbar">
+            <div class="logo">
+                <i class="fas fa-cube"></i> BodyVision
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="faq">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Discover the Interactive Health</h1>
+            <p>Explore the 3D Body Model, Dive into Insightful Articles, Chat with our AI Assistant, and Share Your Thoughts on the Platform</p>
+            <button class="btn get-started">Get Started</button>
+            <button class="btn join-now">Join Now</button>
+        </div>
+    </div>
+</body>
+</html>

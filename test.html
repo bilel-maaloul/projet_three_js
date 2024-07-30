@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepAnatomy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2b2443;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px; /* Adjusted padding to move higher */
+            background-color: transparent;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 100px; /* Increased width */
+            height: 100px; /* Increased height */
+            margin-right: 20px; /* Increased margin for better spacing */
+        }
+
+        .logo h1 {
+            font-size: 36px; /* Increased font size for the logo text */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Reduced height to move it up */
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            margin-bottom: 10vh; /* Added margin-bottom to move it further from the bottom */
+        }
+
+        .hero h2 {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .bu{
+            padding: 15px 30px;
+            background-color: #c1272d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #a02023;
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="depp.png" alt="DeepAnatomy Logo">
+            <h1>DeepAnatomy</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">How to Use</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="overlay"></div>
+    <video autoplay muted loop class="video-background">
+        <source src="/vecteezy_human-body-3d-video-animation-of-inside-of-human-body_32202914.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <main>
+        <section class="hero">
+            <h2>Explore, Interact, Discover</h2>
+            <p>Revolutionizing Medical Research</p>
+             <a href="code.html" class="bu">get to the app </a>
+        </section>
+    </main>
+</body>
+</html>
